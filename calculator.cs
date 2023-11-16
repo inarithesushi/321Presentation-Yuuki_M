@@ -3,6 +3,7 @@
 
 using System;
 
+// Accessibility issue. Need to write a summary of a function.
 class Calculator
 {
     static void Main()
@@ -12,18 +13,17 @@ class Calculator
         try
         {
             Console.Write("Enter the first number: ");
-            int num1 = Console.ReadLine(); //
+            int num1 = int.Parse(Console.ReadLine()); // Implementation issue. Need to convert string to int.
 
             Console.Write("Enter the second number: ");
-            int num2 = Console.ReadLine(); //
+            int num2 = int.Parse(Console.ReadLine()); // Implementation issue. Need to convert string to int.
 
             Console.WriteLine("Select operation (+, -, *, /): ");
-            char operation = Console.ReadLine()[0]; //
+            char operation = Console.ReadLine()[0]; // Logic Error. It will return Exception when the ReadLine is empty.
 
             CalculatorLogic calculatorLogic = new CalculatorLogic();
-            // 
 
-            int result = calculatorLogic.PerformCalculation(num1, num2); // 
+            int result = calculatorLogic.PerformCalculation(num1, num2); // Logic Error. It also need to pass "char operation."
 
             Console.WriteLine($"Result: {result}");
         }
@@ -34,6 +34,7 @@ class Calculator
     }
 }
 
+// Accessibility issue. Need to write a summary of a function.
 class CalculatorLogic
 {
     public int PerformCalculation(int num1, int num2, char operation)
@@ -52,7 +53,6 @@ class CalculatorLogic
                 result = num1 * num2;
                 break;
             case '/':
-                // *
                 if (num2 != 0)
                 {
                     result = num1 / num2;
@@ -60,7 +60,6 @@ class CalculatorLogic
                 else
                 {
                     Console.WriteLine("Error: Division by zero");
-                    //
                 }
                 break;
             default:
@@ -68,7 +67,8 @@ class CalculatorLogic
                 Console.WriteLine("Error: Invalid operation selected.");
                 //
                 break;
-        }
+        } // Implementation issue. The programmer hardcoaded the cases and writing a function directly.
+          // Possibly, the programmer can make other separated functions for calculations.
 
         return result;
     }
@@ -79,6 +79,6 @@ class CalculatorUtility
     // * 
     public string ConvertToBinary(int decimalNumber)
     {
-        return Convert.ToString(decimalNumber, 10);
+        return Convert.ToString(decimalNumber, 2); // Implementation issue. The code need to put "2" for convert binary.
     }
 }
